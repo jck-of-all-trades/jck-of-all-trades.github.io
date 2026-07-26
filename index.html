@@ -1,46 +1,161 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juni Kim – Home</title>
-  <!-- Google Fonts preload + embed -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juni Kim</title>
+<meta name="description" content="Juni Kim — notoriously curious. Project manager and QA/QC manager for AI systems, billing manager, newsletter writer, reader.">
+<meta property="og:title" content="Juni Kim">
+<meta property="og:description" content="Notoriously curious about most things. I like learning how things work.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000; --paper:#fff; --body:#2b2b2b; --dim:#8c8c8c; --hair:#e4e4e4;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --sans:"Space Grotesk",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:300;
+  font-size:.8125rem;line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid var(--ink);outline-offset:5px}
+
+.mono{
+  font-family:var(--mono);font-size:.625rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+}
+
+/* ---------- HEAD ---------- */
+.head{padding:clamp(2.25rem,5vw,3.5rem) 1.25rem 0;text-align:center}
+.head__img{
+  width:clamp(72px,8vw,88px);aspect-ratio:1;border-radius:50%;
+  margin:0 auto clamp(1.1rem,2.5vw,1.5rem);overflow:hidden;background:#f4f4f4;
+}
+.head__img img{width:100%;height:100%;object-fit:cover;display:block}
+.head h1{
+  margin:0;font-size:.75rem;font-weight:400;
+  letter-spacing:.44em;text-transform:uppercase;
+}
+
+/* ---------- BOARD ---------- */
+.board{
+  max-width:1240px;margin:0 auto;
+  padding:clamp(2.25rem,5.5vw,4rem) 1rem clamp(2.5rem,6vw,4rem);
+}
+.board svg{width:100%;height:auto;display:block;overflow:visible}
+
+.trace{fill:none;stroke:var(--hair);stroke-width:1.25}
+.flow{
+  fill:none;stroke:var(--ink);stroke-width:1.25;
+  stroke-dasharray:3 15;
+  animation:current 2.4s linear infinite;
+}
+@keyframes current{to{stroke-dashoffset:-36}}
+
+.pad{fill:var(--paper);stroke:var(--ink);stroke-width:1.25}
+.svg-label{
+  font-family:var(--mono);font-size:13px;font-weight:400;
+  letter-spacing:2.4px;fill:var(--ink);text-transform:uppercase;
+}
+.svg-sub{font-family:var(--mono);font-size:11px;fill:var(--dim);letter-spacing:1.4px}
+.arrow{fill:var(--ink)}
+
+/* ---------- PASSAGE ---------- */
+.passage{
+  max-width:58ch;margin:0 auto;
+  padding:0 1.5rem clamp(4rem,9vw,6.5rem);
+  color:var(--body);
+}
+.passage p{margin:0 0 1.5em}
+.passage p:last-child{margin-bottom:0}
+.passage strong{font-weight:400;color:var(--ink)}
+
+.passage a{
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-decoration-color:#bdbdbd;
+  text-underline-offset:.3em;
+  transition:text-decoration-color .2s ease;
+}
+.passage a:hover{text-decoration-color:var(--ink)}
+.passage a .ext{
+  font-size:.62em;margin-left:.3em;color:var(--dim);
+  vertical-align:.28em;
+}
+.passage a:hover .ext{color:var(--ink)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <!-- Site Header -->
-  <header>
-    <div class="container">
-      <nav class="desktop">
-        <a href="index.html" class="active">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="mywriting.html">Writing</a>
-        <a href="aboutme.html">About</a>
-      </nav>
-    </div>
-    <!-- Mobile Navigation Panel -->
-    <nav class="mobile">
-      <a href="index.html" class="active">Home</a>
-      <a href="resume.html">Resume</a>
-      <a href="mywriting.html">My Writing</a>
-      <a href="aboutme.html">About Me</a>
-    </nav>
-  </header>
-  <!-- Landing / Profile Section -->
-  <section class="profile">
-    <div class="profile-pic">
-     <img src="assets/IMG_6231 2.jpg" alt="Profile picture of Juni Kim">
-    </div>
-   <h1 class="greeting">
-  Hi, my name is <span class="name">Juni</span>
-</h1>
-    <p class="bio">
-     Working in software project management and marketing with a B.A. in Literary Journalism, minor in philosophy.
-    </p>
-  </section>
+
+<header class="head">
+  <div class="head__img"><img src="assets/core-placeholder.png" alt="Juni Kim"></div>
+  <h1>Juni Kim</h1>
+</header>
+
+<div class="board">
+<svg viewBox="0 0 1200 560" role="img" aria-label="A closed loop connecting work, writing, reading and study">
+  <path class="trace" d="M600 30 V150 M140 150 H1060 M1060 150 V430 M1060 430 H140 M140 430 V150"/>
+  <path class="flow" d="M140 150 H1060 V430 H140 Z"/>
+  <path class="flow" d="M600 30 V150"/>
+
+  <polygon class="arrow" points="600,150 592,138 608,138"/>
+  <polygon class="arrow" points="1060,300 1052,288 1068,288"/>
+  <polygon class="arrow" points="600,430 592,442 608,442" transform="rotate(180 600 436)"/>
+  <polygon class="arrow" points="140,282 132,294 148,294"/>
+
+  <g>
+    <line class="trace" x1="330" y1="150" x2="330" y2="96"/>
+    <rect class="pad" x="323" y="143" width="14" height="14"/>
+    <text class="svg-label" x="330" y="78" text-anchor="middle">Work</text>
+    <text class="svg-sub" x="330" y="58" text-anchor="middle">01</text>
+  </g>
+
+  <g>
+    <line class="trace" x1="870" y1="150" x2="870" y2="96"/>
+    <rect class="pad" x="863" y="143" width="14" height="14"/>
+    <text class="svg-label" x="870" y="78" text-anchor="middle">Writing</text>
+    <text class="svg-sub" x="870" y="58" text-anchor="middle">02</text>
+  </g>
+
+  <g>
+    <line class="trace" x1="870" y1="430" x2="870" y2="484"/>
+    <rect class="pad" x="863" y="423" width="14" height="14"/>
+    <text class="svg-label" x="870" y="508" text-anchor="middle">Reading</text>
+    <text class="svg-sub" x="870" y="530" text-anchor="middle">03</text>
+  </g>
+
+  <g>
+    <line class="trace" x1="330" y1="430" x2="330" y2="484"/>
+    <rect class="pad" x="323" y="423" width="14" height="14"/>
+    <text class="svg-label" x="330" y="508" text-anchor="middle">Study</text>
+    <text class="svg-sub" x="330" y="530" text-anchor="middle">04</text>
+  </g>
+</svg>
+</div>
+
+<div class="passage">
+  <p>Hi, I'm Juni. I'm notoriously curious about most things. I like learning how things work (the systems underneath them) and what has to happen for them to run at all.</p>
+
+  <p>By day I'm a project manager and QA/QC manager for AI systems at a startup in Southern California, and the billing manager at an assisted living facility. I take joy in studying the system, finding what can be automated, working across agile teams, and moving back and forth between understanding day-to-day user needs and the solutions to solve them.</p>
+
+  <p>In my free time, I write <a href="https://substack.com/" target="_blank" rel="noopener">a newsletter<span class="ext" aria-hidden="true">&#8599;</span></a> and make <a href="https://www.youtube.com/" target="_blank" rel="noopener">videos<span class="ext" aria-hidden="true">&#8599;</span></a> about the companies, ideas, and strategies shaping the future.</p>
+
+  <p>I studied at UC Irvine — B.A. in Literary Journalism, minor in Philosophy, 2024. I'm <a href="https://www.goodreads.com/" target="_blank" rel="noopener">still always digging<span class="ext" aria-hidden="true">&#8599;</span></a> into philosophy and epistemology, psychology and behavioral science, science fiction, and the classics. Mostly I want to know how people think, and why.</p>
+</div>
+
 </body>
 </html>
