@@ -48,25 +48,30 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- BOARD ---------- */
 .board{
-  max-width:1240px;margin:0 auto;
-  padding:clamp(2.25rem,5.5vw,4rem) 1rem clamp(2.5rem,6vw,4rem);
+  max-width:58ch;margin:0 auto;
+  padding:clamp(1.75rem,4.5vw,2.75rem) 1.5rem clamp(2rem,5vw,3rem);
 }
 .board svg{width:100%;height:auto;display:block;overflow:visible}
 
-.trace{fill:none;stroke:var(--hair);stroke-width:1.25}
+.trace{fill:none;stroke:var(--hair);stroke-width:1}
 .flow{
-  fill:none;stroke:var(--ink);stroke-width:1.25;
-  stroke-dasharray:3 15;
+  fill:none;stroke:var(--ink);stroke-width:1;
+  stroke-dasharray:2 9;
   animation:current 2.4s linear infinite;
 }
-@keyframes current{to{stroke-dashoffset:-36}}
+@keyframes current{to{stroke-dashoffset:-22}}
 
-.pad{fill:var(--paper);stroke:var(--ink);stroke-width:1.25}
+.pad{fill:var(--paper);stroke:var(--ink);stroke-width:1}
 .svg-label{
-  font-family:var(--mono);font-size:13px;font-weight:400;
-  letter-spacing:2.4px;fill:var(--ink);text-transform:uppercase;
+  font-family:var(--mono);font-size:9.5px;font-weight:400;
+  letter-spacing:1.4px;fill:var(--ink);text-transform:uppercase;
 }
-.svg-sub{font-family:var(--mono);font-size:11px;fill:var(--dim);letter-spacing:1.4px}
+.svg-sub{font-family:var(--mono);font-size:7.5px;fill:var(--dim);letter-spacing:.7px}
+
+@media(max-width:30rem){
+  .svg-label{font-size:12px;letter-spacing:1.6px}
+  .svg-sub{font-size:9.5px;letter-spacing:.9px}
+}
 .arrow{fill:var(--ink)}
 
 /* ---------- PASSAGE ---------- */
@@ -107,42 +112,43 @@ a{color:inherit;text-decoration:none}
 </header>
 
 <div class="board">
-<svg viewBox="0 0 1200 560" role="img" aria-label="A closed loop connecting work, writing, reading and study">
-  <path class="trace" d="M600 30 V150 M140 150 H1060 M1060 150 V430 M1060 430 H140 M140 430 V150"/>
-  <path class="flow" d="M140 150 H1060 V430 H140 Z"/>
-  <path class="flow" d="M600 30 V150"/>
+<svg viewBox="0 0 360 200" role="img" aria-label="A closed loop connecting work, writing, reading and study">
+  <path class="trace" d="M180 16 V62 M30 62 H330 M330 62 V150 M330 150 H30 M30 150 V62"/>
+  <path class="flow" d="M30 62 H330 V150 H30 Z"/>
+  <path class="flow" d="M180 16 V62"/>
 
-  <polygon class="arrow" points="600,150 592,138 608,138"/>
-  <polygon class="arrow" points="1060,300 1052,288 1068,288"/>
-  <polygon class="arrow" points="600,430 592,442 608,442" transform="rotate(180 600 436)"/>
-  <polygon class="arrow" points="140,282 132,294 148,294"/>
+  <polygon class="arrow" points="180,62 176.5,55 183.5,55"/>
+  <polygon class="arrow" points="70,62 63,58.5 63,65.5"/>
+  <polygon class="arrow" points="330,109 326.5,102 333.5,102"/>
+  <polygon class="arrow" points="177,150 184,146.5 184,153.5"/>
+  <polygon class="arrow" points="30,103 26.5,110 33.5,110"/>
 
   <g>
-    <line class="trace" x1="330" y1="150" x2="330" y2="96"/>
-    <rect class="pad" x="323" y="143" width="14" height="14"/>
-    <text class="svg-label" x="330" y="78" text-anchor="middle">Work</text>
-    <text class="svg-sub" x="330" y="58" text-anchor="middle">01</text>
+    <line class="trace" x1="105" y1="62" x2="105" y2="48"/>
+    <rect class="pad" x="102.5" y="59.5" width="5" height="5"/>
+    <text class="svg-label" x="105" y="41" text-anchor="middle">Work</text>
+    <text class="svg-sub" x="105" y="29" text-anchor="middle">01</text>
   </g>
 
   <g>
-    <line class="trace" x1="870" y1="150" x2="870" y2="96"/>
-    <rect class="pad" x="863" y="143" width="14" height="14"/>
-    <text class="svg-label" x="870" y="78" text-anchor="middle">Writing</text>
-    <text class="svg-sub" x="870" y="58" text-anchor="middle">02</text>
+    <line class="trace" x1="255" y1="62" x2="255" y2="48"/>
+    <rect class="pad" x="252.5" y="59.5" width="5" height="5"/>
+    <text class="svg-label" x="255" y="41" text-anchor="middle">Writing</text>
+    <text class="svg-sub" x="255" y="29" text-anchor="middle">02</text>
   </g>
 
   <g>
-    <line class="trace" x1="870" y1="430" x2="870" y2="484"/>
-    <rect class="pad" x="863" y="423" width="14" height="14"/>
-    <text class="svg-label" x="870" y="508" text-anchor="middle">Reading</text>
-    <text class="svg-sub" x="870" y="530" text-anchor="middle">03</text>
+    <line class="trace" x1="255" y1="150" x2="255" y2="164"/>
+    <rect class="pad" x="252.5" y="147.5" width="5" height="5"/>
+    <text class="svg-label" x="255" y="177" text-anchor="middle">Reading</text>
+    <text class="svg-sub" x="255" y="189" text-anchor="middle">03</text>
   </g>
 
   <g>
-    <line class="trace" x1="330" y1="430" x2="330" y2="484"/>
-    <rect class="pad" x="323" y="423" width="14" height="14"/>
-    <text class="svg-label" x="330" y="508" text-anchor="middle">Study</text>
-    <text class="svg-sub" x="330" y="530" text-anchor="middle">04</text>
+    <line class="trace" x1="105" y1="150" x2="105" y2="164"/>
+    <rect class="pad" x="102.5" y="147.5" width="5" height="5"/>
+    <text class="svg-label" x="105" y="177" text-anchor="middle">Study</text>
+    <text class="svg-sub" x="105" y="189" text-anchor="middle">04</text>
   </g>
 </svg>
 </div>
