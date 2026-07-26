@@ -63,14 +63,14 @@ a{color:inherit;text-decoration:none}
 
 .pad{fill:var(--paper);stroke:var(--ink);stroke-width:1}
 .svg-label{
-  font-family:var(--mono);font-size:9.5px;font-weight:400;
-  letter-spacing:1.4px;fill:var(--ink);text-transform:uppercase;
+  font-family:var(--mono);font-size:7px;font-weight:400;
+  letter-spacing:1.1px;fill:var(--dim);text-transform:uppercase;
 }
-.svg-sub{font-family:var(--mono);font-size:7.5px;fill:var(--dim);letter-spacing:.7px}
-
 @media(max-width:30rem){
-  .svg-label{font-size:12px;letter-spacing:1.6px}
-  .svg-sub{font-size:9.5px;letter-spacing:.9px}
+  .svg-label{font-size:9px;letter-spacing:1.3px}
+}
+@media(max-width:22rem){
+  .svg-label{font-size:11px;letter-spacing:1.5px}
 }
 .arrow{fill:var(--ink)}
 
@@ -78,7 +78,7 @@ a{color:inherit;text-decoration:none}
 .passage{
   max-width:58ch;margin:0 auto;
   padding:0 1.5rem clamp(4rem,9vw,6.5rem);
-  color:var(--body);
+  color:var(--ink);
 }
 .passage p{margin:0 0 1.5em}
 .passage p:last-child{margin-bottom:0}
@@ -107,12 +107,12 @@ a{color:inherit;text-decoration:none}
 <body>
 
 <header class="head">
-  <div class="head__img"><img src="assets/core-placeholder.png" alt="Juni Kim"></div>
+  <div class="head__img"><img src="assets/ChatGPT%20Image%20Jul%2026%2C%202026%2C%2004_30_23%20PM.png" alt="Juni Kim"></div>
   <h1>Juni Kim</h1>
 </header>
 
 <div class="board">
-<svg viewBox="0 0 360 200" role="img" aria-label="A closed loop connecting work, writing, reading and study">
+<svg viewBox="0 0 360 186" role="img" aria-label="A closed loop connecting work, writing, reading and study">
   <path class="trace" d="M180 16 V62 M30 62 H330 M330 62 V150 M330 150 H30 M30 150 V62"/>
   <path class="flow" d="M30 62 H330 V150 H30 Z"/>
   <path class="flow" d="M180 16 V62"/>
@@ -127,28 +127,24 @@ a{color:inherit;text-decoration:none}
     <line class="trace" x1="105" y1="62" x2="105" y2="48"/>
     <rect class="pad" x="102.5" y="59.5" width="5" height="5"/>
     <text class="svg-label" x="105" y="41" text-anchor="middle">Work</text>
-    <text class="svg-sub" x="105" y="29" text-anchor="middle">01</text>
   </g>
 
   <g>
     <line class="trace" x1="255" y1="62" x2="255" y2="48"/>
     <rect class="pad" x="252.5" y="59.5" width="5" height="5"/>
     <text class="svg-label" x="255" y="41" text-anchor="middle">Writing</text>
-    <text class="svg-sub" x="255" y="29" text-anchor="middle">02</text>
   </g>
 
   <g>
     <line class="trace" x1="255" y1="150" x2="255" y2="164"/>
     <rect class="pad" x="252.5" y="147.5" width="5" height="5"/>
     <text class="svg-label" x="255" y="177" text-anchor="middle">Reading</text>
-    <text class="svg-sub" x="255" y="189" text-anchor="middle">03</text>
   </g>
 
   <g>
     <line class="trace" x1="105" y1="150" x2="105" y2="164"/>
     <rect class="pad" x="102.5" y="147.5" width="5" height="5"/>
     <text class="svg-label" x="105" y="177" text-anchor="middle">Study</text>
-    <text class="svg-sub" x="105" y="189" text-anchor="middle">04</text>
   </g>
 </svg>
 </div>
