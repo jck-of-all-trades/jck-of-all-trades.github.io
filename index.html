@@ -47,6 +47,21 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ---------- BOARD ---------- */
+/* name typewriter */
+.sr-only{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.name{position:relative;display:inline-block}
+.name__ghost{visibility:hidden}
+.name__anim{position:absolute;left:0;top:0;white-space:pre}
+.caret{
+  display:inline-block;width:1px;height:1em;
+  background:var(--ink);vertical-align:-.14em;margin-left:-.3em;
+}
+.caret.is-blinking{animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
 .board{
   max-width:58ch;margin:0 auto;
   padding:clamp(1.75rem,4.5vw,2.75rem) 1.5rem clamp(2rem,5vw,3rem);
@@ -107,7 +122,13 @@ a{color:inherit;text-decoration:none}
 <body>
 
 <header class="head">
-  <h1>Juni Kim</h1>
+  <h1>
+    <span class="name">
+      <span class="name__ghost" aria-hidden="true">Juni Kim 👩🏻</span>
+      <span class="name__anim" aria-hidden="true"><span class="name__text"></span><span class="caret"></span></span>
+    </span>
+    <span class="sr-only">Juni Kim</span>
+  </h1>
   <div class="head__img"><img src="assets/ChatGPT%20Image%20Jul%2026%2C%202026%2C%2004_30_23%20PM.png" alt="Juni Kim"></div>
 </header>
 
@@ -150,7 +171,7 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <div class="passage">
-  <p>Hey, I'm Juni! 👩🏻 𐦍</p>
+  <p>Hey, I'm Juni! 𐦍</p>
 
   <p>I'm notoriously curious about most things. I like learning how things work &amp; what has to happen for them to run at all.</p>
 
@@ -161,5 +182,65 @@ a{color:inherit;text-decoration:none}
   <p>I studied at UC Irvine — B.A. in Literary Journalism, minor in Philosophy, 2024. I'm <a href="https://www.goodreads.com/user/show/92004612-juni-kim" target="_blank" rel="noopener">still always digging<span class="ext" aria-hidden="true">↗</span></a> into philosophy and epistemology, psychology and behavioral science, science fiction, and the classics 📘. Mostly I want to know how people think, and why 𖡎.</p>
 </div>
 
+<script>
+(function () {
+  var text  = document.querySelector('.name__text');
+  var caret = document.querySelector('.caret');
+  var ghost = document.querySelector('.name__ghost');
+  if (!text || !caret || !ghost) return;
+
+  var NAME = ghost.textContent;
+
+  // Split into user-perceived characters. Slicing the raw string would tear the
+  // emoji apart mid-keystroke: a lone surrogate, then a skin-tone-less figure.
+  function graphemes(str) {
+    if (window.Intl && Intl.Segmenter) {
+      var seg = new Intl.Segmenter('en', { granularity: 'grapheme' });
+      return Array.from(seg.segment(str), function (g) { return g.segment; });
+    }
+    var out = [];
+    Array.from(str).forEach(function (ch) {
+      var cp = ch.codePointAt(0);
+      if (out.length && cp >= 0x1F3FB && cp <= 0x1F3FF) out[out.length - 1] += ch;
+      else out.push(ch);
+    });
+    return out;
+  }
+  var UNITS = graphemes(NAME);
+
+  // Reduced motion: just show the name, no caret, no animation.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    text.textContent = NAME;
+    caret.style.display = 'none';
+    return;
+  }
+
+  var TYPE = 105, ERASE = 55, HOLD = 2000, EMPTY = 650, START = 450;
+  var i = 0, typing = true;
+
+  function step() {
+    if (typing) {
+      text.textContent = UNITS.slice(0, ++i).join('');
+      if (i === UNITS.length) {
+        caret.classList.add('is-blinking');   // blinks only once fully typed
+        typing = false;
+        setTimeout(step, HOLD);
+      } else {
+        setTimeout(step, TYPE);
+      }
+    } else {
+      caret.classList.remove('is-blinking');  // solid again while erasing
+      text.textContent = UNITS.slice(0, --i).join('');
+      if (i === 0) {
+        typing = true;
+        setTimeout(step, EMPTY);
+      } else {
+        setTimeout(step, ERASE);
+      }
+    }
+  }
+  setTimeout(step, START);
+})();
+</script>
 </body>
 </html>
